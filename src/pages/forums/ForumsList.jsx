@@ -484,7 +484,8 @@ export const ForumThreads = () => {
 export const ThreadDetail = () => {
   const { threadId } = useParams();
   const navigate = useNavigate();
-  const { isAuthenticated, user, token } = useAuth();
+  const { isAuthenticated, user } = useAuth();
+  const token = localStorage.getItem("token");
   const [thread, setThread] = useState(null);
   const [loading, setLoading] = useState(true);
   const [replyText, setReplyText] = useState("");
