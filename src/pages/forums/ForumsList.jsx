@@ -23,6 +23,7 @@ const API_BASE_URL =
 
 // API Service
 const forumAPI = {
+  
   getForums: () => axios.get(`${API_BASE_URL}/forum`),
   getThreads: (forumId, params) =>
     axios.get(`${API_BASE_URL}/forum/${forumId}/threads`, { params }),
@@ -225,7 +226,8 @@ export const ForumsList = () => {
 export const ForumThreads = () => {
   const { forumId } = useParams();
   const navigate = useNavigate();
-  const { isAuthenticated, token } = useAuth();
+  const { isAuthenticated } = useAuth();
+  const token = localStorage.getItem("token");
   const [forum, setForum] = useState(null);
   const [threads, setThreads] = useState([]);
   const [loading, setLoading] = useState(true);
